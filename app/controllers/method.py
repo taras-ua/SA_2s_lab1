@@ -8,7 +8,7 @@ class Tank:
         self.caliber = caliber
 
 class Planes:
-    def _init_(self,name,maxSpeed,flightAltitude,attackRadius):
+    def __init__(self,name,maxSpeed,flightAltitude,attackRadius):
         self.name = name
         self.maxSpeed = maxSpeed
         self.flightAltitude = flightAltitude
