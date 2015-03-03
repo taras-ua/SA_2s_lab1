@@ -180,12 +180,12 @@ def purposefulSearchMethod(dictOfWishes):
                     dictOfResults['BMP'] = BMP.name
                     sum += BMP.cost
                     break
+        dictOfResults['price'] = sum
 
         if (len(dictOfResults['Tank']) > 0) and (len(dictOfResults['Plane']) > 0) and (
                     len(dictOfResults['Ship']) > 0) and (len(dictOfResults['PVO']) > 0) and (
                     len(dictOfResults['BMP']) > 0) and (dictOfWishes['budget'] >= sum):
             listOfAlternatives.append(dictOfResults)
-            listOfAlternatives['price'] = sum
 
         if (listOfTanks[0].flag == False) and (listOfTanks[1].flag == False) and (listOfTanks[2].flag == False) and (
                     listOfTanks[3].flag == False):
