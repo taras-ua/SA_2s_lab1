@@ -49,7 +49,21 @@ def main(request):
                 int(request.GET.get('bmp_soldiers')),
                 int(request.GET.get('bmp_armor')), 0)
 
-    #TODO give me some back-end here
+
+    dictOfWishes = {'wishTankMaxSpeed':required_tank.maxSpeed,
+                    'wishTankPowerOfMarch': ,
+                    'wishTankCaliber': ,
+                    'wishPlaneMaxSpeed': ,
+                    'wishPlaneFlightAltitude': ,
+                    'wishPlaneAttackRadius': ,
+                    'wishPlaneCalibre': ,
+                    'wishShipMaxSpeed': ,
+                    'wishShipCarrying': ,
+                    'wishShipPlanesOnBoard': ,
+                    'wishShipSoldiers': ,
+                    'wishPVOAttackRadius': ,
+                    'wishPVOWarheadSpeed': ,
+                    'wishPVOAttackHeight': }
     result_dictionary = []
 
     return result_dictionary

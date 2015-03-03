@@ -54,30 +54,30 @@ listOfPVO = []
 listOfShips = []
 listOfBMP = []
 
-listOfTanks.append(Tank('CHALLENGER',56,400,120,1))
-listOfTanks.append(Tank('BULAT',60,600,125,1))
-listOfTanks.append(Tank('ABRAMS',67,465,120,1))
-listOfTanks.append(Tank('LEOPARD',65,600,105,1))
+listOfTanks.append(Tank('CHALLENGER',56,400,120,6000000))
+listOfTanks.append(Tank('BULAT',60,600,125,287500))
+listOfTanks.append(Tank('ABRAMS',67,465,120,6500000))
+listOfTanks.append(Tank('LEOPARD',65,600,105,5000000))
 
-listOfPlanes.append(Plane('TYPHOON',2450,19812,1390,27,1))
-listOfPlanes.append(Plane('RAFALE',1900,15240,1110,30,1))
-listOfPlanes.append(Plane('GRIPEN',2200,15240,800,27,1))
-listOfPlanes.append(Plane('F-18',1915,15240,1065,20,1))
-listOfPlanes.append(Plane('SU-35',2500,18000,900,30,1))
+listOfPlanes.append(Plane('TYPHOON',2450,19812,1390,27,114000000))
+listOfPlanes.append(Plane('RAFALE',1900,15240,1110,30,124000000))
+listOfPlanes.append(Plane('GRIPEN',2200,15240,800,27,60000000))
+listOfPlanes.append(Plane('F-18',1915,15240,1065,20,60900000))
+listOfPlanes.append(Plane('SU-35',2500,18000,900,30,38000000))
 
-listOfShips.append(Ship('UOSP',24,41.182,46,1900,1))
-listOfShips.append(Ship('TARAVA',24,40608,43,1900,1))
-listOfShips.append(Ship('KARLOS-1',21,27.079,30,1200,1))
-listOfShips.append(Ship('OUSHEN',18,22500,18,800,1))
-listOfShips.append(Ship('MISTRAL',19,21300,16,900,1))
-listOfShips.append(Ship('TOHTO',22,18800,15,700,1))
-listOfShips.append(Ship('HUGO',30,18000,11,500,1))
+listOfShips.append(Ship('UOSP',24,41.182,46,1900,720000000))
+listOfShips.append(Ship('TARAVA',24,40608,43,1900,700000000))
+listOfShips.append(Ship('KARLOS-1',21,27.079,30,1200,400000000))
+listOfShips.append(Ship('OUSHEN',18,22500,18,800,650000000))
+listOfShips.append(Ship('MISTRAL',19,21300,16,900,600000000))
+listOfShips.append(Ship('TOHTO',22,18800,15,700,500000000))
+listOfShips.append(Ship('HUGO',30,18000,11,500,490000000))
 
-listOfPVO.append(PVO('IGLA',34,1500,12,1))
-listOfPVO.append(PVO('PANCIR',20,1450,15,1))
-listOfPVO.append(PVO('IGLA-C',6,1440,3.5,1))
-listOfPVO.append(PVO('EGIDA',500,30000,250,1))
-listOfPVO.append(PVO('TOPOL-M',11,1000,11,1))
+listOfPVO.append(PVO('IGLA',34,1500,12,1000000))
+listOfPVO.append(PVO('PANCIR',20,1450,15,14670000))
+listOfPVO.append(PVO('IGLA-C',6,1440,3.5,900000))
+listOfPVO.append(PVO('EGIDA',500,30000,250,115000000))
+listOfPVO.append(PVO('TOPOL-M',11,1000,11,25000000))
 
 listOfBMP.append(BMP('Warrior',75,7,155,2100000))
 listOfBMP.append(BMP('Bradley',65,6,70,3160000))
@@ -113,7 +113,7 @@ def purposefulSearchMethod(dictOfWishes,money):
     listOfCosts = []
 
     end = False
-    while end == False:
+    while not end:
 
         dictOfResults = {'Tank':'' , 'Plane':'' , 'Ship':'' , 'PVO':'' , 'BMP':''}
         sum = 0
@@ -167,7 +167,7 @@ def purposefulSearchMethod(dictOfWishes,money):
                     sum+=BMP.cost
                     break
 
-        if (len(dictOfResults['Tank']) > 0) and (len(dictOfResults['Plane']) > 0) and (len(dictOfResults['Ship']) > 0) and (len(dictOfResults['PVO']) > 0) and (len(dictOfResults['BMP']) > 0):
+        if (len(dictOfResults['Tank']) > 0) and (len(dictOfResults['Plane']) > 0) and (len(dictOfResults['Ship']) > 0) and (len(dictOfResults['PVO']) > 0) and (len(dictOfResults['BMP']) > 0) and (money >= sum):
             listOfAlternatives.append(dictOfResults)
             listOfCosts.append(sum)
 
@@ -181,7 +181,7 @@ def purposefulSearchMethod(dictOfWishes,money):
             end = True
         if (listOfBMP[0].flag == False) and (listOfBMP[1].flag == False) and (listOfBMP[2].flag == False) and (listOfBMP[3].flag == False):
             end = True
-    return 0
+    return (listOfAlternatives,listOfCosts)
 
 
 
