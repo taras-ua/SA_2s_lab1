@@ -42,6 +42,12 @@ label {
 
 .hidden-help {
     opacity: 0;
+    padding: 10px;
+}
+
+table {
+    font-size: 10pt;
+    margin: 0;
 }
 
 h3 {
@@ -49,4 +55,17 @@ h3 {
     width: 100% !important;
     margin-top: 0 !important;
     margin-bottom: 10px !important;
+}
+
+@media screen and (max-width: 991px) {
+
+    .hidden-help {
+       display: none;
+    }
+
+    .subform {
+        width: 46%;
+        margin: 10px 2%;
+    }
+
 }
