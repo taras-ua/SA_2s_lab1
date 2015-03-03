@@ -179,22 +179,3 @@ def purposefulSearchMethod(dictOfWishes):
         listOfAlternatives[i]['id'] = i + 1
 
     return listOfAlternatives
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
