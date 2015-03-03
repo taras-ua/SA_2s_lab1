@@ -84,11 +84,11 @@ listOfPVO.append(PVO('IGLA-C', 6, 1440, 3.5, 900000))
 listOfPVO.append(PVO('EGIDA', 500, 30000, 250, 115000000))
 listOfPVO.append(PVO('TOPOL-M', 11, 1000, 11, 25000000))
 
-listOfBMP.append(BMP('Warrior', 75, 7, 155, 2100000))
+
 listOfBMP.append(BMP('Bradley', 65, 6, 70, 3160000))
 listOfBMP.append(BMP('M113', 64, 11, 70, 1050000))
 listOfBMP.append(BMP('BMP-1', 65, 8, 30, 40000))
-
+listOfBMP.append(BMP('Warrior', 75, 7, 155, 2100000))
 
 
 # ############################################################################WISHES
@@ -114,11 +114,29 @@ wishPVOAttackHeight = 1
 
 def purposefulSearchMethod(dictOfWishes):
     listOfAlternatives = []
+    listOfAlternatives.copy()
+    for element in listOfTanks:
+        element.flag = True
+    for element in listOfShips:
+        element.flag = True
+    for element in listOfBMP:
+        element.flag = True
+    for element in listOfPVO:
+        element.flag = True
+    for element in listOfPlanes:
+        element.flag = True
+    #dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '', 'price': 0}
 
     end = False
     while not end:
 
         dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '', 'price': 0}
+        #dictOfResults.update([('Tank','')])
+        #dictOfResults.update([('Plane','')])
+        #dictOfResults.update([('Ship','')])
+        #dictOfResults.update([('PVO','')])
+        #dictOfResults.update([('BMP','')])
+        #dictOfResults.update([('price','')])
         sum = 0
 
         for tank in listOfTanks:
@@ -168,7 +186,7 @@ def purposefulSearchMethod(dictOfWishes):
                 else:
                     dictOfResults['PVO'] = PVO.name
                     sum += PVO.cost
-
+                    PVO.flag = False
                     break
 
         for BMP in listOfBMP:
@@ -180,7 +198,9 @@ def purposefulSearchMethod(dictOfWishes):
                 else:
                     dictOfResults['BMP'] = BMP.name
                     sum += BMP.cost
+                    BMP.flag = False
                     break
+
         dictOfResults['price'] = sum
 
         if (len(dictOfResults['Tank']) > 0) and (len(dictOfResults['Plane']) > 0) and (
