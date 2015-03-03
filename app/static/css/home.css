@@ -8,9 +8,10 @@ html {
 }
 
 .result-holder {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center !important;
 }
 
 .btn-holder {
@@ -54,6 +55,19 @@ label {
 .content-holder table {
     font-size: 10pt;
     margin: 0;
+}
+
+.result-holder table tbody tr {
+    color: grey;
+}
+
+.result-holder table tbody tr:first-of-type {
+    font-size: 14pt;
+    color: #000000;
+}
+
+th {
+    text-align: center !important;
 }
 
 h3 {
