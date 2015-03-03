@@ -22,10 +22,10 @@
                 <div class="subform well hidden-help" id="tank_help">
                     <table class="table">
                         <thead>
-                            <th>Model</th>
-                            <th>S</th>
-                            <th>F</th>
-                            <th>G</th>
+                            <th>MODEL</th>
+                            <th>SPE</th>
+                            <th>FUE</th>
+                            <th>GAU</th>
                         </thead>
                         <tbody>
                             {% for tank in tanks %}
@@ -85,10 +85,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="subform well hidden-help" id="bmp_help">info</div>
+                <div class="subform well hidden-help" id="bmp_help">
+                    <table class="table">
+                        <thead>
+                            <th>MODEL</th>
+                            <th>SPE</th>
+                            <th>SOL</th>
+                            <th>ARM</th>
+                        </thead>
+                        <tbody>
+                            {% for apc in apcs %}
+                                <tr>
+                                    <td>{{ apc.name }}</td>
+                                    <td>{{ apc.maxSpeed }}</td>
+                                    <td>{{ apc.soldiers }}</td>
+                                    <td>{{ apc.armor }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="col-md-12">
-                <div class="subform well hidden-help" id="plane_help">info</div>
+                <div class="subform well hidden-help" id="plane_help">
+                    <table class="table">
+                        <thead>
+                            <th>MODEL</th>
+                            <th>SPE</th>
+                            <th>RAD</th>
+                            <th>GAU</th>
+                            <th>ALT</th>
+                        </thead>
+                        <tbody>
+                            {% for plane in planes %}
+                                <tr>
+                                    <td>{{ plane.name }}</td>
+                                    <td>{{ plane.maxSpeed }}</td>
+                                    <td>{{ plane.attackRadius }}</td>
+                                    <td>{{ plane.calibre }}</td>
+                                    <td>{{ plane.flightAltitude }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
                 <div class="subform well" id="plane_form">
                     <div class="form-group">
                         <h3 class="control-label">Planes</h3>
@@ -147,10 +187,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="subform well hidden-help" id="ship_help">info</div>
+                <div class="subform well hidden-help" id="ship_help">
+                    <table class="table">
+                        <thead>
+                            <th>MODEL</th>
+                            <th>SPE</th>
+                            <th>CAR</th>
+                            <th>PLA</th>
+                            <th>SOL</th>
+                        </thead>
+                        <tbody>
+                            {% for ship in ships %}
+                                <tr>
+                                    <td>{{ ship.name }}</td>
+                                    <td>{{ ship.maxSpeed }}</td>
+                                    <td>{{ ship.carrying }}</td>
+                                    <td>{{ ship.planesOnBoard }}</td>
+                                    <td>{{ ship.soldiers }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="col-md-12">
-                <div class="subform well hidden-help" id="pvo_help">info</div>
+                <div class="subform well hidden-help" id="pvo_help">
+                    <table class="table">
+                        <thead>
+                            <th>MODEL</th>
+                            <th>SPE</th>
+                            <th>RAD</th>
+                            <th>HEI</th>
+                        </thead>
+                        <tbody>
+                            {% for caw in caws %}
+                                <tr>
+                                    <td>{{ caw.name }}</td>
+                                    <td>{{ caw.warheadSpeed }}</td>
+                                    <td>{{ caw.attackRadius }}</td>
+                                    <td>{{ caw.attackHeight }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
                 <div class="subform well" id="pvo_form">
                     <div class="form-group">
                         <h3 class="control-label">CAWs</h3>
