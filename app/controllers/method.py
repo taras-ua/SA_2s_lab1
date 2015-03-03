@@ -114,12 +114,11 @@ wishPVOAttackHeight = 1
 
 def purposefulSearchMethod(dictOfWishes):
     listOfAlternatives = []
-    listOfCosts = []
 
     end = False
     while not end:
 
-        dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': ''}
+        dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '' , 'price': 0}
         sum = 0
 
         for tank in listOfTanks:
@@ -186,7 +185,7 @@ def purposefulSearchMethod(dictOfWishes):
                     len(dictOfResults['Ship']) > 0) and (len(dictOfResults['PVO']) > 0) and (
                     len(dictOfResults['BMP']) > 0) and (dictOfWishes['budget'] >= sum):
             listOfAlternatives.append(dictOfResults)
-            listOfCosts.append(sum)
+            listOfAlternatives['price'] = sum
 
         if (listOfTanks[0].flag == False) and (listOfTanks[1].flag == False) and (listOfTanks[2].flag == False) and (
                     listOfTanks[3].flag == False):
@@ -204,7 +203,13 @@ def purposefulSearchMethod(dictOfWishes):
         if (listOfBMP[0].flag == False) and (listOfBMP[1].flag == False) and (listOfBMP[2].flag == False) and (
                     listOfBMP[3].flag == False):
             end = True
-    return (listOfAlternatives, listOfCosts)
+    i = 0
+    while i < listOfAlternatives.count():
+        if listOfAlternatives[i]['price'] > (listOfAlternatives[i+1]['price'] - 1):
+            a = listOfAlternatives[i]
+            listOfAlternatives[i] = listOfAlternatives[i+1]
+            listOfAlternatives[i+1] = a
+    return listOfAlternatives
 
 
 
