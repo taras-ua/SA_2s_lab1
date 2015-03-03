@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponse
 from django import forms
 import app.controllers.main as controller
+from app.controllers.method import listOfTanks
 
 
 class GraphForm(forms.Form):
@@ -50,7 +51,12 @@ def home(request):
                 'budget': 500000,
             }
         )
-        return render_to_response('home.html', {'form': form}, context_instance=RequestContext(request))
+        return render_to_response('home.html',
+                                  {
+                                      'form': form,
+                                      'tanks': listOfTanks
+                                  },
+                                  context_instance=RequestContext(request))
     if request.method == 'POST':
         form = GraphForm(request.POST)
         if form.is_valid():

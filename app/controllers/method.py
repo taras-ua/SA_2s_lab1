@@ -107,7 +107,7 @@ wishPVOAttackHeight = 1
 #############################################################################
 
 
-def purposefulSearchMethod(dictOfWishes,money):
+def purposefulSearchMethod(dictOfWishes):
 
     listOfAlternatives = []
     listOfCosts = []
@@ -167,7 +167,7 @@ def purposefulSearchMethod(dictOfWishes,money):
                     sum+=BMP.cost
                     break
 
-        if (len(dictOfResults['Tank']) > 0) and (len(dictOfResults['Plane']) > 0) and (len(dictOfResults['Ship']) > 0) and (len(dictOfResults['PVO']) > 0) and (len(dictOfResults['BMP']) > 0) and (money >= sum):
+        if (len(dictOfResults['Tank']) > 0) and (len(dictOfResults['Plane']) > 0) and (len(dictOfResults['Ship']) > 0) and (len(dictOfResults['PVO']) > 0) and (len(dictOfResults['BMP']) > 0) and (dictOfWishes['budget'] >= sum):
             listOfAlternatives.append(dictOfResults)
             listOfCosts.append(sum)
 
