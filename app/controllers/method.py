@@ -209,6 +209,7 @@ def purposefulSearchMethod(dictOfWishes):
             a = listOfAlternatives[i]
             listOfAlternatives[i] = listOfAlternatives[i+1]
             listOfAlternatives[i+1] = a
+            i+=1
     i = 0
     while i < listOfAlternatives.count():
         listOfAlternatives['ID'] = i+1
