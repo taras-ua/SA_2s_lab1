@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponse
 from django import forms
 import app.controllers.main as controller
-from app.controllers.method import listOfTanks, listOfBMP, listOfPlanes, listOfShips, listOfPVO
+from app.controllers.method import listOfTanksGeneric, listOfBMPGeneric, listOfPlanesGeneric, listOfShipsGeneric, listOfPVOGeneric
 
 
 class GraphForm(forms.Form):
@@ -54,11 +54,11 @@ def home(request):
         return render_to_response('home.html',
                                   {
                                       'form': form,
-                                      'tanks': listOfTanks,
-                                      'apcs': listOfBMP,
-                                      'planes': listOfPlanes,
-                                      'ships': listOfShips,
-                                      'caws': listOfPVO,
+                                      'tanks': listOfTanksGeneric,
+                                      'apcs': listOfBMPGeneric,
+                                      'planes': listOfPlanesGeneric,
+                                      'ships': listOfShipsGeneric,
+                                      'caws': listOfPVOGeneric
                                   },
                                   context_instance=RequestContext(request))
     if request.method == 'POST':
