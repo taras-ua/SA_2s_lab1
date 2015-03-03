@@ -125,18 +125,11 @@ def purposefulSearchMethod(dictOfWishes):
         element.flag = True
     for element in listOfPlanes:
         element.flag = True
-    #dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '', 'price': 0}
 
     end = False
     while not end:
 
         dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '', 'price': 0}
-        #dictOfResults.update([('Tank','')])
-        #dictOfResults.update([('Plane','')])
-        #dictOfResults.update([('Ship','')])
-        #dictOfResults.update([('PVO','')])
-        #dictOfResults.update([('BMP','')])
-        #dictOfResults.update([('price','')])
         sum = 0
 
         for tank in listOfTanks:
