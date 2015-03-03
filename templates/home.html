@@ -4,43 +4,161 @@
     <meta charset="UTF-8">
     <title>Lab. 1 sem. 2</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/home.css">
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     <script src="{{ STATIC_URL }}js/validator.min.js"></script>
     <script src="{{ STATIC_URL }}js/home.js"></script>
 </head>
 <body>
-    <div class="content-holder well col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+    <div class="content-holder well col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-2 col-xs-10 col-xs-offset-1">
         <form class="form-horizontal" data-toggle="validator" role="form" method="post">
             {% csrf_token %}
+
             {% load widget_tweaks %}
-             <div class="form-group">
-                <h3 class="control-label col-sm-3">Tanks</h3>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="id_tank_speed">Max speed (km/h):</label>
-                <div class="col-sm-8">
-                    {{ form.tank_speed|add_class:"form-control"|attr:"required" }}
+            <div class="subform">
+                <div class="form-group">
+                    <h3 class="control-label">Tanks</h3>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_tank_speed">Speed (km/h):</label>
+                    <div class="col-sm-12">
+                        {{ form.tank_speed|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_tank_fuel">Fuel (km):</label>
+                    <div class="col-sm-12">
+                        {{ form.tank_fuel|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_tank_gauge">Gauge (mm):</label>
+                    <div class="col-sm-12">
+                        {{ form.tank_gauge|add_class:"form-control"|attr:"required" }}
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="id_tank_fuel">Fuel distance (km):</label>
-                <div class="col-sm-8">
-                    {{ form.tank_fuel|add_class:"form-control"|attr:"required" }}
+            <div class="subform">
+                <div class="form-group">
+                    <h3 class="control-label">BMP</h3>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_bmp_speed">Speed (km/h):</label>
+                    <div class="col-sm-12">
+                        {{ form.bmp_speed|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_bmp_soldiers">Soldiers count:</label>
+                    <div class="col-sm-12">
+                        {{ form.bmp_soldiers|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_bmp_armor">Armor (mm):</label>
+                    <div class="col-sm-12">
+                        {{ form.bmp_armor|add_class:"form-control"|attr:"required" }}
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="id_tank_gauge">Armor gauge (mm):</label>
-                <div class="col-sm-8">
-                    {{ form.tank_gauge|add_class:"form-control"|attr:"required" }}
+            <div class="subform">
+                <div class="form-group">
+                    <h3 class="control-label">Planes</h3>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_plane_speed">Speed (km/h):</label>
+                    <div class="col-sm-12">
+                        {{ form.plane_speed|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_plane_attack_radius">Attack radius (km):</label>
+                    <div class="col-sm-12">
+                        {{ form.plane_attack_radius|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_plane_gauge">Gauge (mm):</label>
+                    <div class="col-sm-12">
+                        {{ form.plane_gauge|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_plane_altitude">Altitude (km):</label>
+                    <div class="col-sm-12">
+                        {{ form.plane_altitude|add_class:"form-control"|attr:"required" }}
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-default">Submit</button>
+            <div class="subform">
+                <div class="form-group">
+                    <h3 class="control-label">Ships</h3>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_ship_speed">Speed (km/h):</label>
+                    <div class="col-sm-12">
+                        {{ form.ship_speed|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_ship_carrying">Carrying (t):</label>
+                    <div class="col-sm-12">
+                        {{ form.ship_carrying|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_ship_planes_count">Planes count:</label>
+                    <div class="col-sm-12">
+                        {{ form.ship_planes_count|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_ship_soldiers">Soldiers count:</label>
+                    <div class="col-sm-12">
+                        {{ form.ship_soldiers|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+            </div>
+            <div class="subform">
+                <div class="form-group">
+                    <h3 class="control-label">CAW</h3>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_pvo_speed">Warhead speed (km/h):</label>
+                    <div class="col-sm-12">
+                        {{ form.pvo_speed|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_pvo_attack_radius">Attack radius (km):</label>
+                    <div class="col-sm-12">
+                        {{ form.pvo_attack_radius|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_pvo_attack_height">Attack height (km):</label>
+                    <div class="col-sm-12">
+                        {{ form.pvo_attack_height|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+            </div>
+            <div class="subform">
+                <div class="form-group">
+                    <h3 class="control-label">&nbsp;</h3>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12" for="id_budget">Budget ($):</label>
+                    <div class="col-sm-12">
+                        {{ form.budget|add_class:"form-control"|attr:"required" }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="btn-holder col-sm-12">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
                 </div>
             </div>
         </form>
