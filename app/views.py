@@ -71,4 +71,4 @@ def home(request):
 
 def result(request):
     result = controller.main(request)
-    return HttpResponse(status=200)
+    return render_to_response('result.html', {'results': result}, context_instance=RequestContext(request))

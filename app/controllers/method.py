@@ -91,7 +91,7 @@ listOfBMP.append(BMP('BMP-1', 65, 8, 30, 40000))
 
 
 
-#############################################################################WISHES
+# ############################################################################WISHES
 wishTankMaxSpeed = 1
 wishTankPowerOfMarch = 1
 wishTankCaliber = 1
@@ -118,7 +118,7 @@ def purposefulSearchMethod(dictOfWishes):
     end = False
     while not end:
 
-        dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '' , 'price': 0}
+        dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '', 'price': 0}
         sum = 0
 
         for tank in listOfTanks:
@@ -174,7 +174,8 @@ def purposefulSearchMethod(dictOfWishes):
         for BMP in listOfBMP:
             if BMP.flag == True:
                 if (BMP.maxSpeed < dictOfWishes['wishBMPMaxSpeed']) or (
-                            BMP.soldiers < dictOfWishes['wishBMPSoldiers']) or (BMP.armor < dictOfWishes['wishBMPArmor']):
+                            BMP.soldiers < dictOfWishes['wishBMPSoldiers']) or (
+                            BMP.armor < dictOfWishes['wishBMPArmor']):
                     BMP.flag = False
                 else:
                     dictOfResults['BMP'] = BMP.name
@@ -194,7 +195,8 @@ def purposefulSearchMethod(dictOfWishes):
                     listOfPlanes[3].flag == False) and (listOfPlanes[4].flag == False):
             end = True
         if (listOfShips[0].flag == False) and (listOfShips[1].flag == False) and (listOfShips[2].flag == False) and (
-                    listOfShips[3].flag == False) and (listOfShips[4].flag == False) and (listOfShips[5].flag == False) and (
+                    listOfShips[3].flag == False) and (listOfShips[4].flag == False) and (
+                    listOfShips[5].flag == False) and (
                     listOfShips[6].flag == False):
             end = True
         if (listOfPVO[0].flag == False) and (listOfPVO[1].flag == False) and (listOfPVO[2].flag == False) and (
@@ -203,17 +205,10 @@ def purposefulSearchMethod(dictOfWishes):
         if (listOfBMP[0].flag == False) and (listOfBMP[1].flag == False) and (listOfBMP[2].flag == False) and (
                     listOfBMP[3].flag == False):
             end = True
-    i = 0
-    while i < listOfAlternatives.count():
-        if listOfAlternatives[i]['price'] > (listOfAlternatives[i+1]['price'] - 1):
-            a = listOfAlternatives[i]
-            listOfAlternatives[i] = listOfAlternatives[i+1]
-            listOfAlternatives[i+1] = a
-            i+=1
-    i = 0
-    while i < listOfAlternatives.count():
-        listOfAlternatives['ID'] = i+1
-        i+=1
+
+    listOfAlternatives = sorted(listOfAlternatives, key=lambda k: k['price'])
+    for i in range(len(listOfAlternatives)):
+        listOfAlternatives[i]['id'] = i + 1
 
     return listOfAlternatives
 

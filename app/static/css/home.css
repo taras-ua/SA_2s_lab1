@@ -7,6 +7,12 @@ html {
     margin-bottom: 100px;
 }
 
+.result-holder {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .btn-holder {
     width: 100%;
     text-align: right;
@@ -45,7 +51,7 @@ label {
     padding: 10px;
 }
 
-table {
+.content-holder table {
     font-size: 10pt;
     margin: 0;
 }
