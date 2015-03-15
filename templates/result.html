@@ -13,7 +13,7 @@
     <script src="{{ STATIC_URL }}js/home.js"></script>
 </head>
 <body>
-    <div class="result-holder well col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+    <div class="result-holder well col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
         <table class="table">
             <thead>
                 <th>No.</th>
@@ -22,6 +22,8 @@
                 <th>Plane</th>
                 <th>Ship</th>
                 <th>CAW</th>
+                <th>Aircraft</th>
+                <th>Freighter</th>
                 <th>Price</th>
             </thead>
             <tbody>
@@ -33,6 +35,8 @@
                         <td>{{ res.Plane }}</td>
                         <td>{{ res.Ship }}</td>
                         <td>{{ res.PVO }}</td>
+                        <td>{{ res.Freighter }}</td>
+                        <td>{{ res.Aircraft }}</td>
                         <td>{{ res.price }}</td>
                     </tr>
                 {% endfor %}

@@ -65,8 +65,9 @@ class Aircraft:
         self.cost = cost
         self.flag = True
 
+
 class Freighter:
-    def __init__(self, name, range, altitude , load_capacity, cost):
+    def __init__(self, name, range, altitude, load_capacity, cost):
         self.name = name
         self.range = range
         self.altitude = altitude
@@ -113,16 +114,15 @@ listOfBMPGeneric.append(BMP('M113', 64, 11, 70, 1050000))
 listOfBMPGeneric.append(BMP('BMP-1', 65, 8, 30, 40000))
 listOfBMPGeneric.append(BMP('Warrior', 75, 7, 155, 2100000))
 
-listOfAircraftsGeneric.append(Aircraft('Admiral Kuznetsov',55200,1609,45,45,3000000000))
-listOfAircraftsGeneric.append(Aircraft('Invicible',20600,875,50,22,3200000000))
-listOfAircraftsGeneric.append(Aircraft('Charle de Gol',42000,1900,45,40,2500000000))
-listOfAircraftsGeneric.append(Aircraft('Austria Prince',16700,763,60,22,2000000000))
-listOfAircraftsGeneric.append(Aircraft('George Bush',97000,5608,90,90,6500000000))
+listOfAircraftsGeneric.append(Aircraft('Admiral Kuznetsov', 55200, 1609, 45, 45, 3000000000))
+listOfAircraftsGeneric.append(Aircraft('Invicible', 20600, 875, 50, 22, 3200000000))
+listOfAircraftsGeneric.append(Aircraft('Charle de Gol', 42000, 1900, 45, 40, 2500000000))
+listOfAircraftsGeneric.append(Aircraft('Austria Prince', 16700, 763, 60, 22, 2000000000))
+listOfAircraftsGeneric.append(Aircraft('George Bush', 97000, 5608, 90, 90, 6500000000))
 
-listOfFreightersGeneric.append(Freighter('Airbus A400M',8700,12200,64.5,160000000))
-listOfFreightersGeneric.append(Freighter('Boeing KC-135',5550,15200,102,100000000))
-listOfFreightersGeneric.append(Freighter('AN-124',4800,11600,120,300000000))
-
+listOfFreightersGeneric.append(Freighter('Airbus A400M', 8700, 12200, 64.5, 160000000))
+listOfFreightersGeneric.append(Freighter('Boeing KC-135', 5550, 15200, 102, 100000000))
+listOfFreightersGeneric.append(Freighter('AN-124', 4800, 11600, 120, 300000000))
 
 
 def purposefulSearchMethod(dictOfWishes):
@@ -141,7 +141,8 @@ def purposefulSearchMethod(dictOfWishes):
     end = False
     while not end:
 
-        dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '' , 'Aircraft': '' , 'Freighter':'' , 'price': 0}
+        dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '', 'Aircraft': '', 'Freighter': '',
+                         'price': 0}
         sum = 0
 
         for tank in listOfTanks:
@@ -212,7 +213,7 @@ def purposefulSearchMethod(dictOfWishes):
                 freighter.flag = False
                 if not (freighter.range < dictOfWishes['wishFreighterRange'] or
                                 freighter.altitude < dictOfWishes['wishFreighterAltitude'] or
-                                freighter.load_capacity < dictOfWishes['wishAircraftLoadCapacity']):
+                                freighter.load_capacity < dictOfWishes['wishFreighterLoadCapacity']):
                     dictOfResults['Freighter'] = freighter.name
                     sum += freighter.cost
                     break

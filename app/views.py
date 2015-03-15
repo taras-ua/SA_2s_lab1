@@ -3,7 +3,8 @@ from django.template import RequestContext
 from django.http import HttpResponse
 from django import forms
 import app.controllers.main as controller
-from app.controllers.method import listOfTanksGeneric, listOfBMPGeneric, listOfPlanesGeneric, listOfShipsGeneric, listOfPVOGeneric
+from app.controllers.method import listOfTanksGeneric, listOfBMPGeneric, listOfPlanesGeneric, listOfShipsGeneric, listOfPVOGeneric, \
+    listOfAircraftsGeneric, listOfFreightersGeneric
 
 
 class GraphForm(forms.Form):
@@ -24,6 +25,13 @@ class GraphForm(forms.Form):
     pvo_attack_radius = forms.IntegerField(min_value=1)
     pvo_speed = forms.IntegerField(min_value=1)
     pvo_attack_height = forms.IntegerField(min_value=1)
+    aircraft_displacement = forms.IntegerField(min_value=1)
+    aircraft_soldiers = forms.IntegerField(min_value=1)
+    aircraft_autonomy = forms.IntegerField(min_value=1)
+    aircraft_aviation = forms.IntegerField(min_value=1)
+    freighter_range = forms.IntegerField(min_value=1)
+    freighter_altitude = forms.IntegerField(min_value=1)
+    freighter_carrying = forms.IntegerField(min_value=1)
     budget = forms.IntegerField(min_value=1)
 
 
@@ -48,7 +56,14 @@ def home(request):
                 'pvo_attack_radius': 5,
                 'pvo_speed': 1000,
                 'pvo_attack_height': 10,
-                'budget': 3000000000,
+                'aircraft_displacement': 30000,
+                'aircraft_soldiers': 1000,
+                'aircraft_autonomy': 45,
+                'aircraft_aviation': 20,
+                'freighter_range': 4000,
+                'freighter_altitude': 10000,
+                'freighter_carrying': 100,
+                'budget': 4000000000,
             }
         )
         return render_to_response('home.html',
@@ -58,7 +73,9 @@ def home(request):
                                       'apcs': listOfBMPGeneric,
                                       'planes': listOfPlanesGeneric,
                                       'ships': listOfShipsGeneric,
-                                      'caws': listOfPVOGeneric
+                                      'caws': listOfPVOGeneric,
+                                      'aircrafts': listOfAircraftsGeneric,
+                                      'freighters': listOfFreightersGeneric
                                   },
                                   context_instance=RequestContext(request))
     if request.method == 'POST':

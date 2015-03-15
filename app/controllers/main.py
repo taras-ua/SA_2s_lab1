@@ -20,6 +20,13 @@ def build_request(form):
     request += '&wishPVOAttackRadius={}'.format(form.cleaned_data['pvo_attack_radius'])
     request += '&wishPVOWarheadSpeed={}'.format(form.cleaned_data['pvo_speed'])
     request += '&wishPVOAttackHeight={}'.format(form.cleaned_data['pvo_attack_height'])
+    request += '&wishAircraftDisplacement={}'.format(form.cleaned_data['aircraft_displacement'])
+    request += '&wishAircraftSoldiers={}'.format(form.cleaned_data['aircraft_soldiers'])
+    request += '&wishAircraftAutonomy={}'.format(form.cleaned_data['aircraft_autonomy'])
+    request += '&wishAircraftAviation={}'.format(form.cleaned_data['aircraft_aviation'])
+    request += '&wishFreighterRange={}'.format(form.cleaned_data['freighter_range'])
+    request += '&wishFreighterAltitude={}'.format(form.cleaned_data['freighter_altitude'])
+    request += '&wishFreighterLoadCapacity={}'.format(form.cleaned_data['freighter_carrying'])
     request += '&budget={}'.format(form.cleaned_data['budget'])
     return request
 

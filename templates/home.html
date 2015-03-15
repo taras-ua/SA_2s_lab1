@@ -254,6 +254,102 @@
                         </div>
                     </div>
                 </div>
+                <div class="subform well" id="freighter_form">
+                    <div class="form-group">
+                        <h3 class="control-label">Freighter</h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="id_freighter_range">Range (km):</label>
+                        <div class="col-sm-12">
+                            {{ form.freighter_range|add_class:"form-control"|attr:"required" }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="id_freighter_altitude">Altitude (m):</label>
+                        <div class="col-sm-12">
+                            {{ form.freighter_altitude|add_class:"form-control"|attr:"required" }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="id_freighter_carrying">Carrying (t):</label>
+                        <div class="col-sm-12">
+                            {{ form.freighter_carrying|add_class:"form-control"|attr:"required" }}
+                        </div>
+                    </div>
+                </div>
+                <div class="subform well hidden-help" id="freighter_help">
+                    <table class="table">
+                        <thead>
+                            <th>MODEL</th>
+                            <th>RAN</th>
+                            <th>ALT</th>
+                            <th>CAR</th>
+                        </thead>
+                        <tbody>
+                            {% for freighter in freighters %}
+                                <tr>
+                                    <td>{{ freighter.name }}</td>
+                                    <td>{{ freighter.range }}</td>
+                                    <td>{{ freighter.altitude }}</td>
+                                    <td>{{ freighter.load_capacity }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="subform well hidden-help" id="aircraft_help">
+                    <table class="table">
+                        <thead>
+                            <th>MODEL</th>
+                            <th>DIS</th>
+                            <th>SOL</th>
+                            <th>AUT</th>
+                            <th>AVI</th>
+                        </thead>
+                        <tbody>
+                            {% for aircraft in aircrafts %}
+                                <tr>
+                                    <td>{{ aircraft.name }}</td>
+                                    <td>{{ aircraft.displacement }}</td>
+                                    <td>{{ aircraft.soldiers }}</td>
+                                    <td>{{ aircraft.autonomy }}</td>
+                                    <td>{{ aircraft.aviation }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="subform well" id="aircraft_form">
+                    <div class="form-group">
+                        <h3 class="control-label">Aircraft</h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="id_aircraft_displacement">Displacement (t):</label>
+                        <div class="col-sm-12">
+                            {{ form.aircraft_displacement|add_class:"form-control"|attr:"required" }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="id_aircraft_soldiers">Soldiers count:</label>
+                        <div class="col-sm-12">
+                            {{ form.aircraft_soldiers|add_class:"form-control"|attr:"required" }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="id_aircraft_autonomy">Autonomy (days):</label>
+                        <div class="col-sm-12">
+                            {{ form.aircraft_autonomy|add_class:"form-control"|attr:"required" }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="id_aircraft_aviation">Aviation units:</label>
+                        <div class="col-sm-12">
+                            {{ form.aircraft_aviation|add_class:"form-control"|attr:"required" }}
+                        </div>
+                    </div>
+                </div>
                 <div class="subform well">
                     <div class="form-group">
                         <h3 class="control-label">&nbsp;</h3>
