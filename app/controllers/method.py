@@ -54,12 +54,34 @@ class BMP:
         self.cost = cost
         self.flag = True
 
+
+class Aircraft:
+    def __init__(self, name, displacement, soldiers, autonomy, aviation, cost):
+        self.name = name
+        self.displacement = displacement
+        self.soldiers = soldiers
+        self.autonomy = autonomy
+        self.aviation = aviation
+        self.cost = cost
+        self.flag = True
+
+class Freighter:
+    def __init__(self, name, range, altitude , load_capacity, cost):
+        self.name = name
+        self.range = range
+        self.altitude = altitude
+        self.load_capacity = load_capacity
+        self.cost = cost
+        self.flag = True
+
 # #########################################################Forming lists of TANKS,PLANES,SHIPS,PVO,BMP
 listOfTanksGeneric = []
 listOfPlanesGeneric = []
 listOfPVOGeneric = []
 listOfShipsGeneric = []
 listOfBMPGeneric = []
+listOfAircraftsGeneric = []
+listOfFreightersGeneric = []
 
 listOfTanksGeneric.append(Tank('CHALLENGER', 56, 400, 120, 6000000))
 listOfTanksGeneric.append(Tank('BULAT', 60, 600, 125, 287500))
@@ -91,6 +113,17 @@ listOfBMPGeneric.append(BMP('M113', 64, 11, 70, 1050000))
 listOfBMPGeneric.append(BMP('BMP-1', 65, 8, 30, 40000))
 listOfBMPGeneric.append(BMP('Warrior', 75, 7, 155, 2100000))
 
+listOfAircraftsGeneric.append(Aircraft('Admiral Kuznetsov',55200,1609,45,45,3000000000))
+listOfAircraftsGeneric.append(Aircraft('Invicible',20600,875,50,22,3200000000))
+listOfAircraftsGeneric.append(Aircraft('Charle de Gol',42000,1900,45,40,2500000000))
+listOfAircraftsGeneric.append(Aircraft('Austria Prince',16700,763,60,22,2000000000))
+listOfAircraftsGeneric.append(Aircraft('George Bush',97000,5608,90,90,6500000000))
+
+listOfFreightersGeneric.append(Freighter('Airbus A400M',8700,12200,64.5,160000000))
+listOfFreightersGeneric.append(Freighter('Boeing KC-135',5550,15200,102,100000000))
+listOfFreightersGeneric.append(Freighter('AN-124',4800,11600,120,300000000))
+
+
 
 def purposefulSearchMethod(dictOfWishes):
     listOfAlternatives = []
@@ -100,13 +133,15 @@ def purposefulSearchMethod(dictOfWishes):
     listOfBMP = copy.deepcopy(listOfBMPGeneric)
     listOfPVO = copy.deepcopy(listOfPVOGeneric)
     listOfPlanes = copy.deepcopy(listOfPlanesGeneric)
+    listOfAircrafts = copy.deepcopy(listOfAircraftsGeneric)
+    listOfFreighters = copy.deepcopy(listOfFreightersGeneric)
 
-    listOfLists = [listOfTanks, listOfShips, listOfBMP, listOfPVO, listOfPlanes]
+    listOfLists = [listOfTanks, listOfShips, listOfBMP, listOfPVO, listOfPlanes, listOfAircrafts, listOfFreighters]
 
     end = False
     while not end:
 
-        dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '', 'price': 0}
+        dictOfResults = {'Tank': '', 'Plane': '', 'Ship': '', 'PVO': '', 'BMP': '' , 'Aircraft': '' , 'Freighter':'' , 'price': 0}
         sum = 0
 
         for tank in listOfTanks:
@@ -161,11 +196,33 @@ def purposefulSearchMethod(dictOfWishes):
                     sum += BMP.cost
                     break
 
+        for aircraft in listOfAircrafts:
+            if aircraft.flag:
+                aircraft.flag = False
+                if not (aircraft.displacement < dictOfWishes['wishAircraftDisplacement'] or
+                                aircraft.soldiers < dictOfWishes['wishAircraftSoldiers'] or
+                                aircraft.autonomy < dictOfWishes['wishAircraftAutonomy'] or
+                                aircraft.aviation < dictOfWishes['wishAircraftAviation']):
+                    dictOfResults['Aircraft'] = aircraft.name
+                    sum += aircraft.cost
+                    break
+
+        for freighter in listOfFreighters:
+            if freighter.flag:
+                freighter.flag = False
+                if not (freighter.range < dictOfWishes['wishFreighterRange'] or
+                                freighter.altitude < dictOfWishes['wishFreighterAltitude'] or
+                                freighter.load_capacity < dictOfWishes['wishAircraftLoadCapacity']):
+                    dictOfResults['Freighter'] = freighter.name
+                    sum += freighter.cost
+                    break
+
         dictOfResults['price'] = sum
 
         if len(dictOfResults['Tank']) > 0 and len(dictOfResults['Plane']) > 0 and \
                         len(dictOfResults['Ship']) > 0 and len(dictOfResults['PVO']) > 0 and \
-                        len(dictOfResults['BMP']) > 0 and dictOfWishes['budget'] >= sum:
+                        len(dictOfResults['BMP']) > 0 and len(dictOfResults['Aircraft']) > 0 and \
+                        len(dictOfResults['Freighter']) > 0 and dictOfWishes['budget'] >= sum:
             listOfAlternatives.append(dictOfResults)
 
         for listOfTechType in listOfLists:
